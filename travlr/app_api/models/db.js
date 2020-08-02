@@ -12,6 +12,8 @@ const connect = () => {
     }), 1000);
 }
 
+connect();
+
 // CONNECTION EVENTS
 mongoose.connection.on('connected', function() {
     console.log('Mongoose connected to ' + dbURI);
