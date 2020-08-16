@@ -42,6 +42,8 @@ export class EditTripComponent implements OnInit {
     description: ['', Validators.required],
   })
 
+  console.log('EditTripComponent#onInit calling TripDataService#getTrip(\''+ tripCode + '\')');
+
   this.tripService.getTrip(tripCode)
     .then(data => {
       console.log(data);
@@ -52,12 +54,11 @@ export class EditTripComponent implements OnInit {
 
   onSubmit(){
     this.submitted = true;
-
     if(this.editForm.valid) {
       this.tripService.updateTrip(this.editForm.value)
       .then(data => {
         console.log(data);
-        this.router.navigate(['']);
+        this.router.navigate(['trips-listing']);
       });
     }
   }
